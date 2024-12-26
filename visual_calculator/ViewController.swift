@@ -14,6 +14,7 @@ class ViewController: UIViewController {
   var performingMath = true;
   var operation = 0;
   
+  @IBOutlet weak var history: UILabel!
   @IBOutlet weak var label: UILabel!
   @IBAction func numbers(_ sender: UIButton) {
     if sender.tag == 10 {
@@ -86,15 +87,19 @@ class ViewController: UIViewController {
   fileprivate func calculated() {
     if operation == 12{ //Divide
       label.text = String(previousNumber / numberOnScreen)
+      history.text = String(previousNumber) + "/" + String(numberOnScreen)
     }
     else if operation == 13{ //Multiply
       label.text = String(previousNumber * numberOnScreen)
+      history.text = String(previousNumber) + "x" + String(numberOnScreen)
     }
     else if operation == 14{ //Subtract
       label.text = String(previousNumber - numberOnScreen)
+      history.text = String(previousNumber) + "-" + String(numberOnScreen)
     }
     else if operation == 15{ //Add
       label.text = String(previousNumber + numberOnScreen)
+      history.text = String(previousNumber) + "+" + String(numberOnScreen)
     }
   }
 }
